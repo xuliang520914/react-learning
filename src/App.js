@@ -2,12 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 import React, {useState} from 'react';
 
-const todoList = [ 
-  { title: '开发任务-1', status: '22-05-22 18:15' }, 
-  { title: '开发任务-3', status: '22-05-22 18:15' }, 
-  { title: '开发任务-5', status: '22-05-22 18:15' }, 
-  { title: '测试任务-3', status: '22-05-22 18:15' }
-];
+// const todoList = [ 
+//   { title: '开发任务-1', status: '22-05-22 18:15' }, 
+//   { title: '开发任务-3', status: '22-05-22 18:15' }, 
+//   { title: '开发任务-5', status: '22-05-22 18:15' }, 
+//   { title: '测试任务-3', status: '22-05-22 18:15' }
+// ];
 const ongoingList = [ 
   { title: '开发任务-4', status: '22-05-22 18:15' }, 
   { title: '开发任务-6', status: '22-05-22 18:15' }, 
@@ -53,16 +53,24 @@ const KanbanNewCard = ({onSubmit}) => {
 function App() {
   const [showAdd, setShowAdd] = useState(false)
   
-  
+  const [todoList, setTodoList] = useState([ 
+    { title: '开发任务-1', status: '22-05-22 18:15' }, 
+    { title: '开发任务-3', status: '22-05-22 18:15' }, 
+    { title: '开发任务-5', status: '22-05-22 18:15' }, 
+    { title: '测试任务-3', status: '22-05-22 18:15' }
+  ])
 
   const handleAdd = (env) => {
     setShowAdd(true)
   };
 
   const handleSubmit = (title) => {
-    todoList.unshift({title, status: new Date().toDateString()});
-    setShowAdd(false)
-    
+    // todoList.unshift({title, status: new Date().toDateString()});
+    // setShowAdd(false)
+    setTodoList(currentTodoList => [
+      {title, status: new Date().toDateString()},
+      ...currentTodoList
+    ])
   }
 
   return (
